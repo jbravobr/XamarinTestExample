@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XamarinTestExample.Views.HomePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:XamarinTestExample;assembly=XamarinTestExample"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ContentPage.Content>
+        <StackLayout Margin="5,60,5,0">
+            <StackLayout.Children>
+                <Entry AutomationId="txtUsername"
+                       Placeholder="Informe o seu nome"
+                       PlaceholderColor="Silver"
+                       Text="{Binding FirstName}" />
+
+                <Entry AutomationId="txtLastname"
+                       Placeholder="Informe o seu sobrenome"
+                       PlaceholderColor="Silver"
+                       Text="{Binding LastName}" />
+
+                <Entry AutomationId="txtBirthday"
+                       Placeholder="Informe a sua data de nascimento"
+                       PlaceholderColor="Silver"
+                       Text="{Binding Birthday}">
+
+                   <Entry.Behaviors>
+                        <b:EventToCommandBehavior Command="{Binding ShowDatePickerCmd}" EventName="Focused" />
+                    </Entry.Behaviors>
+
+                </Entry>
+
+                <Entry AutomationId="txtEmail"
+                       Placeholder="Informe o seu e-mail"
+                       PlaceholderColor="Silver"
+                       Text="{Binding Email}" />
+
+                <Entry AutomationId="txtCity"
+                       Placeholder="Informe a sua Cidade"
+                       PlaceholderColor="Silver"
+                       Text="{Binding City}" />
+
+                <Button AutomationId="btnSaveUserInfo"
+                        BackgroundColor="Green"
+                        BorderColor="Green"
+                        BorderRadius="3"
+                        BorderWidth="3"
+                        Command="{Binding SaveUserInfoCmd}"
+                        Text="CADASTRAR"
+                        TextColor="White" />
+
+                <Label VerticalOptions="Center"
+                       AutomationId="lblConfirmMsg"
+                       Font="22"
+                       FontAttributes="Bold,Italic"
+                       IsVisible="{Binding IsMsgInfoCompleted}"
+                       Text="Todos os dados foram preenchidos."
+                       TextColor="Red" />
+            </StackLayout.Children>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
